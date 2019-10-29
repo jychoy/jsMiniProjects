@@ -4,14 +4,18 @@
   <meta charset="UTF-8">
   <title>JojoScript Drum Kit</title>
   <link rel="stylesheet" href="style.css">
+  <div class="videoBG">
+    <video autoplay muted loop id="videoStyle">
+      <source src="7pagemuda.mp4" type="video/mp4">
+    </video>
+  </div>
 </head>
+
 <body>
-
-
   <div class="keys">
     <div data-key="65" class="key">
       <kbd>A</kbd>
-      <span class="sound">Golden Wind!!!</span>
+      <span class="sound">Golden Wind!</span>
     </div>
     <
     <div data-key="83" class="key">
@@ -71,8 +75,8 @@
 */
 
 function removeTransition(event){
-  if (e.propertyName !== 'transform') return;
-  e.target.classList.remove('playing'); //The target property of the Event interface is a reference to the object that dispatched the event. 
+  if (event.propertyName !== 'transform') return;
+  event.target.classList.remove('playing'); //The target property of the Event interface is a reference to the object that dispatched the event. 
 }
 
 function playSound(event){
@@ -81,6 +85,7 @@ function playSound(event){
   const audio = document.querySelector(`audio[data-key="${event.keyCode}"]`);
 	//console.log(typeof audio);
 	console.log(key);
+
 	key.classList.add('playing') //adds 'playing' class animation
 	audio.currentTime = 0; //resets audio to beginning so it can be interrupted at any moment
 	audio.play();
@@ -88,12 +93,11 @@ function playSound(event){
 
 
 const keys = Array.from(document.querySelectorAll('.key')); //create shallow-copied array from an array-like or iterable object and assign it to the 'keys' object
-/*need to go remove the 'playing' class animation from each key and it is easier to do so in an array of 'keys' objects (skips hard coding)
+//need to go remove the 'playing' class animation from each key and it is easier to do so in an array of 'keys' objects (skips hard coding)
 keys.forEach(key => key.addEventListener('transitionend', removeTransition)); //ES6 style, forEach() method will remove transition for each array element
 window.addEventListener('keydown', playSound); //play sound when key pressed
 
 </script>
-
 
 </body>
 </html>

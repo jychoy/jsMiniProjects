@@ -2,8 +2,8 @@ html {
   font-size: 10px;
   //background: url(http://i.imgur.com/b9r5sEL.jpg) bottom center;
   //background: url(https://danbooru.donmai.us/data/sample/__higuchi_kaede_and_shizuka_rin_nijisanji_drawn_by_kagami_uekusa__sample-9989a447d79d185a1dc7f0aa0e906627.jpg) bottom center;
-  background: url(https://i.ytimg.com/vi/C5pxHgnrz0M/maxresdefault.jpg) bottom center;
-  background-size: cover;
+  //background: url(https://i.ytimg.com/vi/C5pxHgnrz0M/maxresdefault.jpg) bottom center;
+  //background-size: cover;
 }
 
 body,html {
@@ -53,4 +53,20 @@ kbd {
   text-transform: uppercase;
   letter-spacing: .1rem;
   color: #ffc600;
+}
+
+.videoBG{
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  z-index: -100;
+}
+
+#videoStyle{
+  position: absolute;
+  min-width: 100vw;
+  min-height: 100vh;
 }
