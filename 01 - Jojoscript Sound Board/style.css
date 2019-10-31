@@ -12,48 +12,12 @@ body,html {
   font-family: sans-serif;
 }
 /*
-CSS Selector Reference
-.class
+  CSS Selector Reference
+  .class
+  . is used for class selector. Use a class when you want to consistently style multiple elements throughout the page/site. 
+    Classes are useful when you have, or possibly will have in the future, more than one element that shares the same style.
+  # is used for ID selector. Use the ID when you have a single element on the page that will take the style. Remember that IDs must be unique.
 */
-.keys {
-  display: flex;
-  flex: 1;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-}
-
-.key {
-  border: .4rem solid black;
-  border-radius: .5rem;
-  margin: 1rem;
-  font-size: 1.5rem;
-  padding: 1rem .5rem;
-  transition: all .07s ease;
-  width: 10rem;
-  text-align: center;
-  color: white;
-  background: rgba(0,0,0,0.4);
-  text-shadow: 0 0 .5rem black;
-}
-
-.playing {
-  transform: scale(1.1);
-  border-color: #ffc600;
-  box-shadow: 0 0 1rem #ffc600;
-}
-
-kbd {
-  display: block;
-  font-size: 4rem;
-}
-
-.sound {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: .1rem;
-  color: #ffc600;
-}
 
 .videoBG{
   position: absolute;
@@ -69,4 +33,52 @@ kbd {
   position: absolute;
   min-width: 100vw;
   min-height: 100vh;
+}
+
+/*  use flex containers for keys
+    makes it easier to design flexible responsive layout structure without using float or positioning.
+*/
+.keys {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+/*  style the keys and add transition to change property of the element over time when key is pressed 
+    rem unit size, Relative to font-size of the root element
+*/
+
+.key {
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 10rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 .5rem black;
+}
+
+/*  change colour of key border when key is pressed */
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600; /* Toyota A90 Supra nitro yellow */
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+kbd {
+  display: block;
+  font-size: 4rem;
+}
+
+.sound {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: #ffc600;
 }
