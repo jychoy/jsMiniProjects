@@ -9,7 +9,7 @@
 
     <div class="clock">
       <div class="clock-face">
-        <div class="hand hour-hand" id="hourStyle"></div>
+        <div class="hand hour-hand"></div>
         <div class="hand min-hand" ></div>
         <div class="hand second-hand" ></div>
       </div>
@@ -61,7 +61,7 @@
     .hand {
       width: 50%;
       height: 6px;
-      background: black;
+      background: #FFCC66;
       position: absolute;
       top: 50%;
       /* Added code here*/
@@ -69,6 +69,21 @@
       transform: rotate(90deg); /*  rotate starting point of the hand to top of clock */
       transition: all 0.05s;
       transition-timing-function: ease-in-out;
+    }
+
+    .hour-hand {
+      width: 20%;
+      left: 30%;
+    }
+
+    .second-hand{
+      height: 3px;
+      background: red;
+    }
+
+    .min-hand{
+      width: 40%;
+      left: 10%
     }
 
 
@@ -94,9 +109,6 @@
     //console.log("seconds " + seconds, "minutes " + minutes,"hours " + hours);
     
     //rotate hands
-    secondHand.style.background = 'green';
-    minuteHand.style.background = 'red';
-    hourHand.style.translateX = '50px';
     secondHand.style.transform = `rotate(${secondDegrees}deg)`;  // ES6 Template Literals `expression`
     minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
     hourHand.style.transform = `rotate(${hourDegrees}deg)`;
