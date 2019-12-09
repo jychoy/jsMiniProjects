@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Box</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+/* steps
+1. use fetch() method from the Fetch API to grab city/state from list from endpoint
+  hint: convert data to array first
+2. use filter() method to narrow down returned list of cities/states based on user input into search bar
+  hint: use RegExp attributes to reduce amount of returned results 
+    (RegExp flags − An optional string containing any of the "g", "i", and "m" attributes that specify global, case-insensitive, and multi-line matches, respectively.)
+3. display list of results based on user input
+  hint: use map(), CSS <li>, event listerners, querySelector
+4. highlight matching characters (input characters and resulting characters that match will be highlighted)
+  hint: use CSS <hl>
+*/
+
+//Step 1
+const cities = [];
+
+fetch(endpoint)
+.then(dataBlob => dataBlob.json()) //converts blob of raw data into JSON
+.then(data => cities.push(...data)); //place JSON city data into the cities array
+
+//Step 2
+function matchWords(wordsToMatch, cities) {
+  return cities.filter(place => {
+    const regex = new RegExp(wordsToMatch, 'gi');
+    return place.city.match(regex) || place.state.match(regex)
+  });
+}
+
+//Step 3
+function displayMatches() {
+  const matchArray = matchWords(this.value, cities);
+  const html = matchArray.map(place => {
+    //Step 4
+    const regex = new RegExp(this.value, 'gi');
+    const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
+    const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`);
+    return `
+      <li>
+        <span class="name">${cityName}, ${stateName}</span>
+      <li>
+    `;
+  }).join('')
+  suggestions.innerHTML = html;
+}
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches)
+searchInput.addEventListener('keyup', displayMatches)
+
+</script>
+</body>
+</html>
